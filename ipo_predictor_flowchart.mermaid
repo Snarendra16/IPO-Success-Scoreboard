@@ -1,0 +1,102 @@
+%%{
+  init: {
+    "theme": "base",
+    "themeVariables": {
+      "background": "#ffffff",
+      "primaryColor": "#ffffff",
+      "primaryTextColor": "#000000",
+      "secondaryColor": "#ffffff",
+      "tertiaryColor": "#ffffff",
+      "lineColor": "#000000",
+      "fontSize": "12px",
+      "fontFamily": "Arial",
+      "borderRadius": "5px",
+      "borderColor": "#000000",
+      "borderwidth": "10px"
+
+    }
+  }
+}%%
+
+graph TD
+    A[Start Application] --> B{Choose Mode}
+
+    B -->|Model Training| C[Load CSV Data]
+    B -->|IPO Prediction| M[Load Trained Model]
+    B -->|Model Analysis| T[Display Performance]
+
+    C --> D[Preprocess Data]
+    D --> E[Handle Missing Values]
+    E --> F[Filter Classes: S, F, N]
+    F --> G[Encode Labels]
+
+    G --> H[Feature Engineering]
+    H --> I[Create 26 Features from 9]
+    I --> J[Financial Ratios]
+    I --> K[Growth Metrics]
+    I --> L[Risk Measures]
+
+    J --> N[Scaling]
+    K --> N
+    L --> N
+
+    N --> O[Feature Selection - RFECV]
+    O --> P[Select 10-15 Features]
+
+    P --> Q[Train-Test Split 80-20]
+    Q --> R[SMOTE-Tomek Balancing]
+
+    R --> S[Train 5 Base Models]
+    S --> S1[XGBoost]
+    S --> S2[LightGBM]
+    S --> S3[CatBoost]
+    S --> S4[Balanced RF]
+    S --> S5[Gradient Boosting]
+
+    S1 --> U[Create Ensembles]
+    S2 --> U
+    S3 --> U
+    S4 --> U
+    S5 --> U
+
+    U --> V[Stacking Ensemble]
+    U --> W[Voting Ensemble]
+
+    V --> X[Evaluate Performance]
+    W --> X
+
+    X --> Y[Select Best Ensemble]
+    Y --> Z[Save Models]
+    Z --> AA[Training Complete]
+
+    M --> AB[Input GMP Ratio]
+    AB --> AC[Input 9 IPO Features]
+    AC --> AD[Feature Engineering & Scaling]
+    AD --> AF[Feature Selection]
+    AF --> AG[Base Prediction]
+
+    AG --> AH[Adjust Final Score by GMP]
+    AH --> AK{Final Score?}
+    AK -->|≥75| AL[Success]
+    AK -->|40-74| AM[Normal]
+    AK -->|<40| AN[Fail]
+
+    AL --> AO[Display Results]
+    AM --> AO
+    AN --> AO
+
+    AO --> AP[Show Metrics & Recommendations]
+
+    T --> AT[Load Performance Data]
+    AT --> AU[Display Model Comparison]
+    AU --> AV[Show Confusion Matrix]
+    AV --> AW[Performance Visualization]
+
+
+    %% Custom Styling
+    style A fill:#ffffff,stroke:#000000,color:#000000
+    style AL fill:#ffffff,stroke:#000000,color:#000000
+    style AN fill:#ffffff,stroke:#000000,color:#000000
+    style AM fill:#ffffff,stroke:#000000,color:#000000
+    style Y fill:#ffffff,stroke:#000000,color:#000000
+    style Z fill:#ffffff,stroke:#000000,color:#000000

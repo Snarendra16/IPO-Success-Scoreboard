@@ -1,0 +1,25 @@
+# Core libraries
+pandas==2.2.3
+numpy==1.26.4
+
+# Machine Learning
+scikit-learn==1.5.2
+imbalanced-learn==0.12.4
+xgboost==2.1.1
+lightgbm==4.5.0
+catboost==1.2.3
+
+# Visualization
+matplotlib==3.9.2
+seaborn==0.13.2
+
+# Web App
+streamlit==1.39.0
+
+# Utilities
+pickle-mixin==1.0.2
+
+setuptools>=68.0.0
+wheel
+
+
